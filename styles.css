@@ -9,7 +9,8 @@ body, html {
 }
 
 body {
-    background-image: url("https://static.wixstatic.com/media/74de77_806e1e3a7b9f49869c14b5bad8bd279b~mv2_d_4896_3264_s_4_2.jpg/v1/fill/w_702,h_468,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/74de77_806e1e3a7b9f49869c14b5bad8bd279b~mv2_d_4896_3264_s_4_2.jpg");
+    /* background-image: url("https://static.wixstatic.com/media/74de77_806e1e3a7b9f49869c14b5bad8bd279b~mv2_d_4896_3264_s_4_2.jpg/v1/fill/w_702,h_468,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/74de77_806e1e3a7b9f49869c14b5bad8bd279b~mv2_d_4896_3264_s_4_2.jpg"); */
+    background-image: url("https://images.unsplash.com/photo-1564907587809-3e1969b66ad3?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     height: 50%;
     background-position: center;
     background-repeat: no-repeat;
@@ -64,15 +65,32 @@ body {
     
 }
 
-/* #text{
-    display: absolute;
- } */
+#text{
+    /* display: inline-block; */
+    text-align: center;
+ }
 
 #greetings, #name {
-    text-align: center;
+    text-align: left;
     color: whitesmoke;
     font-size: 32px;
 }
+
+#nameInput {
+    background-color: transparent;
+    outline: none;
+    color: whitesmoke;
+    width: 30%;
+    border:none;
+    border-bottom: 2px solid whitesmoke;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+/*::placeholder{
+    color: whitesmoke;
+} */
 
 h3 {
     color: whitesmoke;
@@ -91,14 +109,34 @@ h3 {
     color: whitesmoke;
     position: relative;
     left: 50px;
+  
+}
+
+#today {
+    display:none;
+}
+
+#checkInput, #checkInputLabel {
+    font-size: 32px;
+    color: whitesmoke;
+}
+#checkInput {
+    display: inline-block;
+    transform: scale(150%);
+}
+#checkInputLabel {
+margin-left: 3%;
+
 }
 
 #footer-container {
    position: fixed;
-   display: inline; 
+   display: flex; 
    bottom: 5%;
    text-align: center;
    width: 100%;
+   justify-content: center;
+   align-items: center;
 }
 
 #quote {
@@ -107,5 +145,17 @@ h3 {
     font-style: italic;
     text-align: center;
     color: whitesmoke;
- 
-}
+ }
+
+ #interpunct {
+    margin-left: 10px;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.3s;
+ }
+
+ #interpunct:hover {
+    opacity: 1;
+ }
