@@ -3,11 +3,9 @@
 function updateTime() {
 
     const now = new Date();
-    const options = { hour: '2-digit', 
-                      minute: '2-digit', 
-                      hour12: false };
+    const options = { hour: '2-digit', minute: '2-digit', hour12: false };
 
-    const timeString = now.toLocaleTimeString(undefined, options);
+    const timeString = now.toLocaleTimeString(undefined, options); // returns time portion of Date() and coverts it to string;
     document.getElementById('time').textContent = timeString;
     
     // change to morning, afternoon, or evening greetings 
@@ -52,7 +50,7 @@ function getRandomQuote() {
 getRandomQuote(); // Display a quote on first load
 
 // change name
-const nameElement = document.getElementById("name"); // span #name
+const nameElement = document.getElementById("name"); // <span> id name
 
 // create function when double clicked
 nameElement.addEventListener('dblclick', () => {  
@@ -73,9 +71,9 @@ nameElement.addEventListener('dblclick', () => {
     input.addEventListener('blur', () => {
         const newName = input.value.trim(); // removes spaces on input
         if (newName) {
-            nameElement.textContent = newName; // Update the name
+            nameElement.textContent = newName + "."; // Update the name
         } else {
-            nameElement.textContent = currentName; // Revert if empty
+            nameElement.textContent = currentName + "."; // Revert if empty
         }
     });
 });
@@ -133,17 +131,20 @@ textInput.addEventListener("keypress",function(event) {
   }
 );
 
-const tasks = document.getElementById("tasks");
+// tasks box
+const tasks = document.getElementById("tasks"); // tasks word
+const taskBox = document.querySelector(".taskBox"); // hidden box
 
+tasks.addEventListener('click', function(event){
+    taskBox.style.display = 'block';
+    tasks.textContent = "";
+    event.stopPropagation();
+});
 
-tasks.addEventListener("click", ()=>{
-    const taskBox = document.querySelector(".taskBox");
-    taskBox.style.display = "block";
-    tasks.innerText = "";
-    
-    });
-
-    // document.getElementById("addTask").addEventListener("click", ()=>{
-
-    // })
+document.addEventListener('click', function(event) {
+    if (!taskBox.contains(event.target) && !tasks.contains(event.target)) {
+        taskBox.style.display = 'none';
+        tasks.textContent = "Tasks";
+    }
+});
 
