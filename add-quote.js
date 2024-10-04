@@ -9,7 +9,8 @@ const quotePopup = document.getElementById('quotePopup');
     // Show the popup
     clickText.addEventListener('click', function() {
         quotePopup.style.display = 'block';
-        // overlay.style.display = 'block';
+      
+        
     });
 
     // Close the popup
@@ -35,13 +36,7 @@ const quotePopup = document.getElementById('quotePopup');
         }
     });
 
-    // Close the popup when clicking outside of it
-    //overlay.addEventListener('click', function() {
-       // quotePopup.style.display = 'none';
-        // overlay.style.display = 'none';
-    //});
-
-    document.addEventListener('click', function(event) {
+     document.addEventListener('click', function(event) {
         if (!quotePopup.contains(event.target) && !clickText.contains(event.target)) {
             quotePopup.style.display = 'none';
            

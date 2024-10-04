@@ -5,7 +5,7 @@ function updateTime() {
     const now = new Date();
     const options = { hour: '2-digit', minute: '2-digit', hour12: false };
 
-    const timeString = now.toLocaleTimeString(undefined, options); // returns time portion of Date() and coverts it to string;
+    const timeString = now.toLocaleTimeString(undefined, options); // returns time portion of Date() and coverts it to string, then sets time format
     document.getElementById('time').textContent = timeString;
     
     // change to morning, afternoon, or evening greetings 
@@ -99,33 +99,29 @@ function changeBg() {
 }
 changeBg(); //run function to change background
 
-const checkInput = document.getElementById("checkInputLabel");
-const textInput = document.getElementById("text-input");
+const checkInput = document.getElementById("checkInputLabel"); //label of checkbox
+const textInput = document.getElementById("text-input"); //input of main goal
 
 function checkBoxInput() {
-    checkInput.innerText = document.getElementById("text-input").value;
-    textInput.style.display="none";
-    document.getElementById("today").style.display = "inline";
+    checkInput.innerText = textInput.value; // label of checkbox = value of input
+    textInput.style.display="none"; // hides goal/input
+    document.getElementById("today").style.display = "inline"; //displays "today" with checkbox
+    document.getElementById("main-goal").style.display = "none";
 }
 
 textInput.addEventListener("keypress",function(event) {
     if (event.key === "Enter") {
-      checkBoxInput();
+      checkBoxInput(); //call function when enter is pressed
       
       const inputCheckBox = document.getElementById("checkInput"); //id of checkbox
-      inputCheckBox.checked = false;
-      function check() {
-        inputCheckBox.checked = true;
-        checkInput.style.textDecoration = "line-through";
-      }
-      function uncheck() {
-        inputCheckBox.checked = false;
-        checkInput.style.textDecoration = "none";
-      }
-// do while cguro
+    
       inputCheckBox.addEventListener("click", ()=>{
-        check();
-        inputCheckBox.addEventListener("click",uncheck);
+        // check();
+        if(inputCheckBox.checked === true){
+            checkInput.style.textDecoration = "line-through";
+        } else {
+            checkInput.style.textDecoration = "none";
+        }
       });
     };
   }
