@@ -159,3 +159,39 @@ margin-left: 3%;
  #interpunct:hover {
     opacity: 1;
  }
+
+ #tasks {
+    position: fixed;
+    color: whitesmoke;
+    opacity: 0.8;
+    text-align: right;
+    right: 2%;
+    bottom: 3%;
+    cursor: pointer;
+   }
+
+.taskBox {
+    display: none;
+    position: fixed;
+    height: 200px;
+    width: 300px;
+    background-color: whitesmoke;
+    right: 2%;
+    bottom: 3%;
+    opacity: 0.8;
+}
+#taskContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#addTask {
+    border-radius: 15px;
+    padding: 5px;
+    width: 30%;
+    color: whitesmoke;
+    background-color: rgb(172, 170, 170);
+    border: none;
+}

@@ -25,8 +25,7 @@ function updateTime() {
         
     }
 }
-// Update the time immediately, then every second
-updateTime();
+updateTime(); // display time on  first load
 setInterval(updateTime, 1000); // runs updateTime() every 1 second
 
 const quotes = [
@@ -50,27 +49,29 @@ function getRandomQuote() {
     const randomIndex = Math.floor(Math.random() * quotes.length);
     document.getElementById('quote').textContent = quotes[randomIndex].kowt + " - " + quotes[randomIndex].author;
 }
-// Display a quote on first load
-getRandomQuote();
+getRandomQuote(); // Display a quote on first load
 
 // change name
-const nameElement = document.getElementById("name");
-nameElement.addEventListener('dblclick', () => {
-    const currentName = nameElement.textContent;
-    const input = document.createElement('input');
-    input.setAttribute("id","nameInput");
-    input.type = 'text';
-    input.value = currentName;
+const nameElement = document.getElementById("name"); // span #name
+
+// create function when double clicked
+nameElement.addEventListener('dblclick', () => {  
+    const currentName = nameElement.textContent; // text content of span
+    const input = document.createElement('input'); // create input in html
+
+    input.setAttribute("id","nameInput"); // set id of input to "nameInput"
+    input.type = 'text'; // set input to text type
+    input.value = currentName; // set value of input to text content of span
     input.style.width = '100px';
 
     // Replace the name with the input field
     nameElement.textContent = '';
-    nameElement.appendChild(input);
-    input.focus();
+    nameElement.appendChild(input); // append input to span
+    input.focus(); // cursor focus on created input text
     
-    // Handle when the input loses focus (optional)
+    // Handle when the input loses focus 
     input.addEventListener('blur', () => {
-        const newName = input.value.trim();
+        const newName = input.value.trim(); // removes spaces on input
         if (newName) {
             nameElement.textContent = newName; // Update the name
         } else {
@@ -98,10 +99,11 @@ function changeBg() {
     const randomIndex = Math.floor(Math.random() * bgImage.length);
         document.body.style.backgroundImage = `url(${bgImage[randomIndex]})`;
 }
-changeBg();
+changeBg(); //run function to change background
 
 const checkInput = document.getElementById("checkInputLabel");
 const textInput = document.getElementById("text-input");
+
 function checkBoxInput() {
     checkInput.innerText = document.getElementById("text-input").value;
     textInput.style.display="none";
@@ -127,21 +129,21 @@ textInput.addEventListener("keypress",function(event) {
         check();
         inputCheckBox.addEventListener("click",uncheck);
       });
+    };
+  }
+);
 
-      
+const tasks = document.getElementById("tasks");
 
-        //  if(inputCheckBox.checked = true){
-        //     checkInput.style.textDecoration = "line-through";
-        // } else {
-        //     checkInput.style.textDecoration = "none";
-        // };
-      };
-          
-    }
-  );
 
-  
-// const addQuote = document.getElementById("interpunct");
-// addQuote.addEventListener('click',()=>{
+tasks.addEventListener("click", ()=>{
+    const taskBox = document.querySelector(".taskBox");
+    taskBox.style.display = "block";
+    tasks.innerText = "";
+    
+    });
 
-// })
+    // document.getElementById("addTask").addEventListener("click", ()=>{
+
+    // })
+
