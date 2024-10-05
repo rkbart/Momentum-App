@@ -102,6 +102,7 @@ changeBg(); //run function to change background
 const checkInput = document.getElementById("checkInputLabel"); //label of checkbox
 const textInput = document.getElementById("text-input"); //input of main goal
 
+//function for main goal
 function checkBoxInput() {
     checkInput.innerText = textInput.value; // label of checkbox = value of input
     textInput.style.display="none"; // hides goal/input
@@ -114,29 +115,55 @@ textInput.addEventListener("keypress",function(event) {
       checkBoxInput(); //call function when enter is pressed
       
       const inputCheckBox = document.getElementById("checkInput"); //id of checkbox
-    
+      
+      
       inputCheckBox.addEventListener("click", ()=>{
-        // check();
-        if(inputCheckBox.checked === true){
-            checkInput.style.textDecoration = "line-through";
-        } else {
-            checkInput.style.textDecoration = "none";
-        }
-      });
+          // check();
+          if(inputCheckBox.checked === true){
+              checkInput.style.textDecoration = "line-through";
+              confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+            } else {
+                checkInput.style.textDecoration = "none";
+            }
+        });
+        
+        const clearGoal = document.getElementById("clearGoal");
+        
+        document.getElementById("input-container").addEventListener("mouseover", ()=>{
+          inputCheckBox.style.visibility = "visible";
+          clearGoal.style.visibility = "visible";
+        })
+        document.getElementById("input-container").addEventListener("mouseleave", ()=>{
+            inputCheckBox.style.visibility = "hidden";
+            clearGoal.style.visibility = "hidden";
+          })
+       
+          clearGoal.addEventListener('click', ()=>{
+            textInput.style.display="inline"; // hides goal/input
+            document.getElementById("today").style.display = "none"; 
+            document.getElementById("main-goal").style.display = "inline";
+            textInput.value = "";
+          })
     };
   }
 );
 
 // tasks box
-const tasks = document.getElementById("tasks"); // tasks word
+const tasks = document.getElementById("tasks"); // tasks span
 const taskBox = document.querySelector(".taskBox"); // hidden box
 
+//display task box
 tasks.addEventListener('click', function(event){
     taskBox.style.display = 'block';
     tasks.textContent = "";
     event.stopPropagation();
 });
 
+//closes task box when clicked outside
 document.addEventListener('click', function(event) {
     if (!taskBox.contains(event.target) && !tasks.contains(event.target)) {
         taskBox.style.display = 'none';

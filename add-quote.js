@@ -1,22 +1,18 @@
 //add quotes
 const clickText = document.getElementById("interpunct");
 const quotePopup = document.getElementById('quotePopup');
-    // const overlay = document.getElementById('overlay');
-    const submitQuote = document.getElementById('submitQuote');
-    const closePopup = document.getElementById('closePopup');
-    // const quotes = [];
+const submitQuote = document.getElementById('submitQuote');
+const closePopup = document.getElementById('closePopup');
+    
 
     // Show the popup
     clickText.addEventListener('click', function() {
         quotePopup.style.display = 'block';
-      
-        
     });
 
     // Close the popup
     closePopup.addEventListener('click', function() {
         quotePopup.style.display = 'none';
-        // overlay.style.display = 'none';
     });
 
     // Submit the quote
@@ -28,7 +24,6 @@ const quotePopup = document.getElementById('quotePopup');
             quotes.push({ kowt: quoteText, author: authorText });
             console.log(quotes); // Display the array in console
             quotePopup.style.display = 'none';
-            // overlay.style.display = 'none';
             document.getElementById('add-quote').value = ''; // Clear input
             document.getElementById('author').value = ''; // Clear input
         } else {
