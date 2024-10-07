@@ -55,25 +55,28 @@ const nameElement = document.getElementById("name"); // <span> id name
 // create function when double clicked
 nameElement.addEventListener('dblclick', () => {  
     const currentName = nameElement.textContent; // text content of span
-    const input = document.createElement('input'); // create input in html
+    const inputName = document.createElement('input'); // create input in html
 
-    input.setAttribute("id","nameInput"); // set id of input to "nameInput"
-    input.type = 'text'; // set input to text type
-    input.value = currentName; // set value of input to text content of span
-    input.style.width = '100px';
+    inputName.setAttribute("id","nameInput"); // set id of input to "nameInput"
+    inputName.type = 'text'; // set input to text type
+    inputName.value = currentName; // set value of input to text content of span
+    inputName.style.width = '100px';
+    inputName.autocomplete = "off"; // removes input history
 
     // Replace the name with the input field
     nameElement.textContent = '';
-    nameElement.appendChild(input); // append input to span
-    input.focus(); // cursor focus on created input text
+    nameElement.appendChild(inputName); // append input to span
+    inputName.focus(); // cursor focus on created input text
     
     // Handle when the input loses focus 
-    input.addEventListener('blur', () => {
-        const newName = input.value.trim(); // removes spaces on input
+    inputName.addEventListener('blur', () => {
+        const newName = inputName.value.trim(); // removes spaces on input
         if (newName) {
-            nameElement.textContent = newName + "."; // Update the name
+            nameElement.textContent = ""; // Update the name
+            nameElement.textContent += newName; // Update the name
         } else {
-            nameElement.textContent = currentName + "."; // Revert if empty
+            nameElement.textContent = currentName; // Revert if empty
+            
         }
     });
 });
@@ -99,24 +102,22 @@ function changeBg() {
 }
 changeBg(); //run function to change background
 
-const checkInput = document.getElementById("checkInputLabel"); //label of checkbox
 const textInput = document.getElementById("text-input"); //input of main goal
+const checkInput = document.getElementById("checkInputLabel"); //label for checkbox
 
 //function for main goal
 function checkBoxInput() {
-    checkInput.innerText = textInput.value; // label of checkbox = value of input
+    checkInput.innerText = textInput.value; // label of checkbox = value of input of main goal
     textInput.style.display="none"; // hides goal/input
-    document.getElementById("today").style.display = "inline"; //displays "today" with checkbox
+    document.getElementById("today").style.display = "block"; //displays "today" with checkbox
     document.getElementById("main-goal").style.display = "none";
 }
 
 textInput.addEventListener("keypress",function(event) {
     if (event.key === "Enter") {
       checkBoxInput(); //call function when enter is pressed
-      
       const inputCheckBox = document.getElementById("checkInput"); //id of checkbox
-      
-      
+            
       inputCheckBox.addEventListener("click", ()=>{
           // check();
           if(inputCheckBox.checked === true){
@@ -152,22 +153,5 @@ textInput.addEventListener("keypress",function(event) {
   }
 );
 
-// tasks box
-const tasks = document.getElementById("tasks"); // tasks span
-const taskBox = document.querySelector(".taskBox"); // hidden box
 
-//display task box
-tasks.addEventListener('click', function(event){
-    taskBox.style.display = 'block';
-    tasks.textContent = "";
-    event.stopPropagation();
-});
-
-//closes task box when clicked outside
-document.addEventListener('click', function(event) {
-    if (!taskBox.contains(event.target) && !tasks.contains(event.target)) {
-        taskBox.style.display = 'none';
-        tasks.textContent = "Tasks";
-    }
-});
 

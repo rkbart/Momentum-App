@@ -1,54 +1,70 @@
 
-const addTask = document.getElementById("addTask");
+// tasks box
+const tasks = document.getElementById("tasks"); // tasks span
+const taskBox = document.querySelector(".taskBox"); // hidden box
+
+// when tasks word is clicked,
+tasks.addEventListener('click', function(event){
+    taskBox.style.display = 'block'; //display task box
+    tasks.textContent = "";
+    // event.stopPropagation();
+});
+
+//closes task box when clicked outside
+document.addEventListener('click', function(event) {
+    if (!taskBox.contains(event.target) && !tasks.contains(event.target)) {
+        taskBox.style.display = 'none';
+        tasks.textContent = "Tasks";
+    }
+});
+
+const addTask = document.getElementById("addTask"); // New Task button
 
 function revealTask() {
-    const taskList = document.getElementById("taskList"); // get div
+    const taskList = document.getElementById("taskList"); // get div for list
     
     //create elements
-    const listItem = document.createElement("div"); //new div
-    listItem.className = "listItem";
+    const listItem = document.createElement("div"); //new div for checkbox and label
+    listItem.className = "listItem"; //give class to div
 
     const taskText = document.createElement("input"); // text input element
-    taskText.type = "text";
-    taskText.id = "taskText";
-    listItem.appendChild(taskText); // show
-    taskText.style.display = "block";
+    taskText.type = "text"; // define type
+    taskText.id = "taskText"; //give id
+    listItem.appendChild(taskText); // append
+    taskText.style.display = "block"; //show text input element
     
     taskText.addEventListener('keypress', (event)=>{
-        if(event.key === "Enter") {
-            event.preventDefault();
+        if(event.key === "Enter") { // when entered
             if(taskText.value === ""){
-                alert('Please fill in.');
-            } else {
+                alert('Please fill in.'); // alert if empty
+            } else { 
                            
             const label = document.createElement("label"); // create label
-            label.textContent = taskText.value;
+            label.textContent = taskText.value; // label is = input text
             
             const checkbox = document.createElement("input"); // create checkbox
             checkbox.type = "checkbox";
             
-            taskText.style.display = "none";
-            label.className = "label";
+            taskText.style.display = "none"; // hide input text
+            label.className = "label"; //give class name to label
+                        
+            listItem.appendChild(checkbox); //append checkbox inside div
+            listItem.appendChild(label); //append label inside div
             
-            
-            listItem.appendChild(checkbox);
-            listItem.appendChild(label);
-            checkbox.onclick = function() {
-                label.classList.toggle("completed");
+            checkbox.onclick = function() { // when checked
+                label.classList.toggle("completed"); // line-through label
             }
             
             // add delete line 
-            const clearLine = document.createElement("p");
-            clearLine.id = "clearLine";
-            clearLine.innerText = "clear tasks";
+            const clearLine = document.createElement("p"); // create delete task line
+            clearLine.id = "clearLine"; //give id
+            clearLine.innerText = "clear tasks"; //give inner text
             
-            listItem.appendChild(clearLine);
+            listItem.appendChild(clearLine);// append
             
-            clearLine.onclick = function() {
-                
-                taskList.remove();
-                clearLine.innerText = ""
-                
+            clearLine.onclick = function() { // when clear line is clicked
+                listItem.remove(); //remove div with label and checkboc
+                clearLine.innerText = ""; //remove "clear tasks" line
             }
         }}
     
@@ -58,7 +74,7 @@ function revealTask() {
     item.appendChild(clearLine)
 
 }
-addTask.addEventListener('click', revealTask); 
+addTask.addEventListener('click', revealTask);
 
 // addTask.addEventListener('click', function() {
 //     const taskList = document.getElementById("taskList"); // get div
