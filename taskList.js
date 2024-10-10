@@ -25,11 +25,13 @@ function revealTask() {
     
     //create elements
     const listItem = document.createElement("div"); //new div for checkbox and label
-    listItem.className = "listItem"; //give class to div
-
+    listItem.id = "listItem"; //give id to div
+    
     const taskText = document.createElement("input"); // text input element
+    
     taskText.type = "text"; // define type
     taskText.id = "taskText"; //give id
+    taskText.spellcheck = false; //stop red squiggly lines
     taskText.autocomplete = "off"; // turns history off
     listItem.appendChild(taskText); // append
     taskText.style.display = "block"; //show text input element
@@ -64,10 +66,11 @@ function revealTask() {
             
             listItem.appendChild(clearLine);// append
             
-            // clearLine.onclick = function() { // when clear line is clicked
-            //     listItem.remove(); //remove div with label and checkboc
-            //     clearLine.innerText = ""; //remove "clear tasks" line
-            // }
+            clearLine.onclick = function() { // when clear line is clicked
+                checkbox.remove(); //remove div with label and checkbox
+                label.remove(); //remove div with label and checkbox
+                clearLine.innerText = ""; //remove "clear tasks" line
+            }
         }}
     
     })
@@ -77,61 +80,3 @@ function revealTask() {
 
 }
 addTask.addEventListener('click', revealTask);
-
-// addTask.addEventListener('click', function() {
-//     const taskList = document.getElementById("taskList"); // get div
-    
-//     //create elements
-//     const listItem = document.createElement("div"); //new div
-//     listItem.classList.add("listItem");
-//     const taskText = document.createElement("input"); // text input element
-//     taskText.type = "text";
-//     taskText.style.border = "0";
-//     taskText.style.borderBottom = "1px solid rgba(0, 0, 0, 0.5)";
-//     taskText.style.outline = "none";
-//     listItem.appendChild(taskText); // show
-    
-
-//     taskText.addEventListener('keypress', (event)=>{
-//         if(event.key === "Enter") {
-//             event.preventDefault();
-//             if(taskText.value === ""){
-//                 alert('Please fill in.');
-//             } else {
-                           
-//             const label = document.createElement("label"); // create label
-//             label.textContent = taskText.value;
-            
-//             const checkbox = document.createElement("input"); // create checkbox
-//             checkbox.type = "checkbox";
-            
-//             taskText.classList.add("taskText"); //display none
-//             label.classList.add("label");
-//             listItem.appendChild(checkbox);
-//             listItem.appendChild(label);
-                         
-//             checkbox.onclick = function() {
-//                 label.classList.toggle("completed");
-//             }
-            
-//             // add delete line 
-//             const clearLine = document.createElement("p");
-//             clearLine.id = "clearLine";
-//             clearLine.innerText = "clear tasks";
-            
-//             listItem.appendChild(clearLine);
-            
-//             clearLine.onclick = function() {
-//                 listItem.removeChild(checkbox);
-//                 listItem.removeChild(label);
-//                 listItem.removeChild(clearLine);
-//             }
-//         }}
-    
-//     })
-//     taskList.appendChild(listItem); // append created div
-//     taskText.value = "";
-//     item.appendChild(clearLine)
-    
-// });  
-

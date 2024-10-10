@@ -51,7 +51,7 @@ getRandomQuote(); // Display a quote on first load
 // change name
 const nameElement = document.getElementById("name"); // <span> id name
 const inputValue = localStorage.getItem('inputValue');
-nameElement.textContent = inputValue;
+nameElement.textContent = inputValue + ".";
 
 // create function when double clicked
 nameElement.addEventListener('dblclick', () => {  
@@ -61,7 +61,7 @@ nameElement.addEventListener('dblclick', () => {
     inputName.setAttribute("id","nameInput"); // set id of input to "nameInput"
     inputName.type = 'text'; // set input to text type
     inputName.value = currentName; // set value of input to text content of span
-    inputName.style.width = '110px';
+    inputName.style.width = '130px';
     inputName.spellcheck = false; // removes red squiggly
     inputName.autocomplete = "off"; // removes input history
 
@@ -75,24 +75,23 @@ nameElement.addEventListener('dblclick', () => {
         const newName = inputName.value.trim(); // removes spaces on input
         if (newName) {
             nameElement.textContent = ""; // Update the name
-            nameElement.textContent += newName; // Update the name
+            nameElement.textContent += newName + "."; // Update the name
         } else {
             localStorage.removeItem('inputValue');  // clear previous stored name
-            nameElement.textContent = currentName; // Revert if empty
+            nameElement.textContent = currentName + "."; // Revert if empty
             localStorage.setItem('inputValue',"Ryan"); //debugger
         }
-        }
-    );
+    }
+);
 
     inputName.addEventListener('keypress', (event) => {
         if(event.key === "Enter"){
         const newName = inputName.value.trim(); // removes spaces on input
         if (newName) {
             nameElement.textContent = ""; // Update the name
-            nameElement.textContent += newName; // Update the name
-            localStorage.removeItem('inputValue');
+            nameElement.textContent += newName + "."; // Update the name
         } else {
-            nameElement.textContent = currentName; // Revert if empty
+            nameElement.textContent = currentName + "."; // Revert if empty
             localStorage.removeItem('inputValue'); // clear previous stored name
             localStorage.setItem('inputValue',"Ryan"); // debugger
             

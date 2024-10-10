@@ -28,17 +28,20 @@
             <div id="time"></div>
             
             <div id="text">
-                <span id="greetings">Good evening,</span>&nbsp;<span id="name">Ryan</span><span id = "removeSpan">.</span> 
+                <span id = "greetings">Good evening,</span>
+                <span id = "name">Ryan</span>
+                <!-- <span id = "removeSpan">.</span>  -->
                 <p id="main-goal">What is your main goal for today?</p>
             </div>
             
-            <input id="text-input" type="text" autocomplete="off">
+            <input id="text-input" type="text" autocomplete="off" spellcheck="false">
             
             <div id="today">
                 <p style="text-align:center; color: whitesmoke; font-size: 24px; margin-top: 15px;">Today</p>
                 <div id="input-container" class="w3-animate-opacity" width="auto">
-                    <input spellcheck="false" type="checkbox" class="w3-check w3-border" id="checkInput" name="chk-name"><label id="checkInputLabel" for="chk-input"></label>
-                    <span id="clearGoal" style="cursor: pointer; float:none; font-size: 16px; color:whitesmoke; visibility: hidden; cursor: pointer; margin-left: 10px;">&times;</span>
+                    <input spellcheck="false" type="checkbox" class="w3-check w3-border" id="checkInput" name="chk-name">
+                    <label id="checkInputLabel" for="chk-input"></label>
+                    <span id="clearGoal" >&times;</span>
                 </div>
             </div>
         </div>
@@ -49,7 +52,7 @@
                 <div id="interpunct" class="material-symbols-outlined">more_horiz</div>
                 
                 <div id="quotePopup">
-                    <span id="closePopup" style="cursor: pointer; float: right; font-size: 20px;">&times;</span>
+                    <span id="closePopup">&times;</span>
                     <h3 style="color: black;">Add a Quote</h3>
                     <label for="add-quote">Quote:</label>
                     <input type="text" id="add-quote" style="width:70%"><br><br>
