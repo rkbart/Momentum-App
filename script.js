@@ -84,8 +84,8 @@ nameElement.addEventListener('dblclick', () => {
 // randomize background image
 const bgImage = ["https://images.pexels.com/photos/4840134/pexels-photo-4840134.jpeg",
     "https://static.wixstatic.com/media/74de77_806e1e3a7b9f49869c14b5bad8bd279b~mv2_d_4896_3264_s_4_2.jpg/v1/fill/w_702,h_468,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/74de77_806e1e3a7b9f49869c14b5bad8bd279b~mv2_d_4896_3264_s_4_2.jpg",
-    "https://images.pexels.com/photos/20694211/pexels-photo-20694211/free-photo-of-oriental-hut.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/13830656/pexels-photo-13830656.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.unsplash.com/photo-1677773592270-f628ca2f12d6?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.pexels.com/photos/9796292/pexels-photo-9796292.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/7156912/pexels-photo-7156912.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/6043246/pexels-photo-6043246.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
@@ -93,6 +93,7 @@ const bgImage = ["https://images.pexels.com/photos/4840134/pexels-photo-4840134.
     "https://images.pexels.com/photos/2559941/pexels-photo-2559941.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/2341830/pexels-photo-2341830.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/2739013/pexels-photo-2739013.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    "https://images.unsplash.com/photo-1481285184914-8a731806bbf8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "https://images.unsplash.com/photo-1564907587809-3e1969b66ad3?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 ];
 const bodyBg = document.getElementsByTagName("body");
@@ -108,9 +109,16 @@ const checkInput = document.getElementById("checkInputLabel"); //label for check
 //function for main goal
 function checkBoxInput() {
     checkInput.innerText = textInput.value; // label of checkbox = value of input of main goal
-    textInput.style.display="none"; // hides goal/input
-    document.getElementById("today").style.display = "block"; //displays "today" with checkbox
-    document.getElementById("main-goal").style.display = "none";
+    // should not accept empty
+    if(textInput.value === "")
+    { 
+        alert("goal should not be empty");
+    }
+    else {
+        textInput.style.display="none"; // hides goal/input
+        document.getElementById("today").style.display = "block"; //displays "today" with checkbox
+        document.getElementById("main-goal").style.display = "none";
+        }   
 }
 
 textInput.addEventListener("keypress",function(event) {
@@ -132,22 +140,25 @@ textInput.addEventListener("keypress",function(event) {
             }
         });
         
-        const clearGoal = document.getElementById("clearGoal");
+        const clearGoal = document.getElementById("clearGoal"); // "x" button
         
-        document.getElementById("input-container").addEventListener("mouseover", ()=>{
+        document.getElementById("input-container").addEventListener("mouseover", ()=>{ // visibilty of delete and checkbox
           inputCheckBox.style.visibility = "visible";
           clearGoal.style.visibility = "visible";
         })
-        document.getElementById("input-container").addEventListener("mouseleave", ()=>{
+
+        document.getElementById("input-container").addEventListener("mouseleave", ()=>{ //make checkbox and delete hidden when mouse out
             inputCheckBox.style.visibility = "hidden";
             clearGoal.style.visibility = "hidden";
           })
        
-          clearGoal.addEventListener('click', ()=>{
+          clearGoal.addEventListener('click', ()=>{ // when delete button is clicked
             textInput.style.display="inline"; // hides goal/input
             document.getElementById("today").style.display = "none"; 
             document.getElementById("main-goal").style.display = "inline";
             textInput.value = "";
+            checkInput.style.textDecoration = "none";
+            inputCheckBox.checked = false;
           })
     };
   }

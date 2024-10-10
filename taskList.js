@@ -30,13 +30,14 @@ function revealTask() {
     const taskText = document.createElement("input"); // text input element
     taskText.type = "text"; // define type
     taskText.id = "taskText"; //give id
+    taskText.autocomplete = "off"; // turns history off
     listItem.appendChild(taskText); // append
     taskText.style.display = "block"; //show text input element
     
     taskText.addEventListener('keypress', (event)=>{
         if(event.key === "Enter") { // when entered
             if(taskText.value === ""){
-                alert('Please fill in.'); // alert if empty
+                alert('Please enter task.'); // alert if empty
             } else { 
                            
             const label = document.createElement("label"); // create label
@@ -44,6 +45,7 @@ function revealTask() {
             
             const checkbox = document.createElement("input"); // create checkbox
             checkbox.type = "checkbox";
+            checkbox.className = "checkbox-task"
             
             taskText.style.display = "none"; // hide input text
             label.className = "label"; //give class name to label
@@ -62,10 +64,10 @@ function revealTask() {
             
             listItem.appendChild(clearLine);// append
             
-            clearLine.onclick = function() { // when clear line is clicked
-                listItem.remove(); //remove div with label and checkboc
-                clearLine.innerText = ""; //remove "clear tasks" line
-            }
+            // clearLine.onclick = function() { // when clear line is clicked
+            //     listItem.remove(); //remove div with label and checkboc
+            //     clearLine.innerText = ""; //remove "clear tasks" line
+            // }
         }}
     
     })

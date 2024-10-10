@@ -13,12 +13,12 @@
         <head>
             <div id="container">
                 <div id="top-left">
-                    <div id="link"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
-                    <div id="brain" class="material-symbols-outlined">cognition</div>
+                    <span id="link"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                    <span id="brain" class="material-symbols-outlined">cognition</span>
              </div>
                 <div id="top-right">
-                    <span class="material-symbols-outlined">pace</span>
-                    <div class="material-symbols-outlined">partly_cloudy_day</div>
+                    <span id="timer" class="material-symbols-outlined">pace</span>
+                    <span id="weather" class="material-symbols-outlined">partly_cloudy_day</span>
                 </div>
             </div> <!--container end-->
         </head>
@@ -27,11 +27,12 @@
             <div id="time"></div>
             
             <div id="text">
-                <span id="greetings">Good evening,</span><span id="name">Ryan</span><span id = "removeSpan">.</span>
-                <h3 id="main-goal"style="display:block">What is your main goal for today?</h3>
+                <span id="greetings">Good evening,</span>&nbsp;<span id="name">Ryan</span><span id = "removeSpan">.</span> 
+                <!-- <span id="changeName" class="material-symbols-outlined">more_horiz</span> -->
+                <p id="main-goal">What is your main goal for today?</p>
             </div>
             
-            <input id="text-input" type="text">
+            <input id="text-input" type="text" autocomplete="off">
             
             <div id="today">
                 <p style="text-align:center; color: whitesmoke; font-size: 24px; margin-top: 15px;">Today</p>

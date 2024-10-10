@@ -26,6 +26,7 @@ const closePopup = document.getElementById('closePopup');
             quotePopup.style.display = 'none';
             document.getElementById('add-quote').value = ''; // Clear input
             document.getElementById('author').value = ''; // Clear input
+            document.getElementById('quote').textContent = quotes[quotes.length - 1].kowt + " - " + quotes[quotes.length - 1].author;
         } else {
             alert('Please fill in both fields.');
         }
