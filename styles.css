@@ -68,7 +68,6 @@ body {
 }
 
 #text{
-    /* display: inline-block; */
     text-align: center;
  }
 
@@ -76,9 +75,12 @@ body {
     text-align: left;
     color: whitesmoke;
     font-size: 32px;
-    display: inline-block;
+    display: inline;
 }
 
+#name {
+    text-transform: capitalize;
+}
 #nameInput {
     background-color: transparent;
     outline: none;
@@ -89,6 +91,7 @@ body {
     padding: 0;
     margin: 0;
     text-align: left;
+    text-transform: capitalize;
 }
 
 #main-goal {
@@ -304,3 +307,4 @@ vertical-align: middle;
 #link:hover, #brain:hover, #timer:hover, #weather:hover {
     opacity: 1;
 }
+
