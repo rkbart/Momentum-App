@@ -7,7 +7,6 @@ const taskBox = document.querySelector(".taskBox"); // hidden box
 tasks.addEventListener('click', function(event){
     taskBox.style.display = 'block'; //display task box
     tasks.textContent = "";
-    // event.stopPropagation();
 });
 
 //closes task box when clicked outside
@@ -22,7 +21,7 @@ const addTask = document.getElementById("addTask"); // New Task button
 
 function revealTask() {
     const taskList = document.getElementById("taskList"); // get div for list
-    
+
     //create elements
     const listItem = document.createElement("div"); //new div for checkbox and label
     listItem.id = "listItem"; //give id to div

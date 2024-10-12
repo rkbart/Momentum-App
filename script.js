@@ -58,13 +58,18 @@ nameElement.addEventListener('dblclick', () => {
     const currentName = nameElement.textContent; // text content of span
     const inputName = document.createElement('input'); // create input in html
 
+    if (currentName.length > 0) {
+        // Remove the last character
+        nameElement.textContent = currentName.slice(0, -1);
+    }
+  
     inputName.setAttribute("id","nameInput"); // set id of input to "nameInput"
     inputName.type = 'text'; // set input to text type
     inputName.value = currentName; // set value of input to text content of span
     inputName.style.width = '130px';
     inputName.spellcheck = false; // removes red squiggly
     inputName.autocomplete = "off"; // removes input history
-
+   
     // Replace the name with the input field
     nameElement.textContent = '';
     nameElement.appendChild(inputName); // append input to span
@@ -72,13 +77,17 @@ nameElement.addEventListener('dblclick', () => {
     
     // Handle when the input loses focus 
     inputName.addEventListener('blur', () => {
-        const newName = inputName.value.trim(); // removes spaces on input
+        const newName = inputName.value.trim(); // removes spaces on input 
         if (newName) {
             nameElement.textContent = ""; // Update the name
-            nameElement.textContent += newName + "."; // Update the name
+            nameElement.textContent += newName; // Update the name
+            if (!nameElement.textContent.endsWith(".")) { // "." error handling
+                nameElement.textContent += "."; 
+            }
         } else {
+
             localStorage.removeItem('inputValue');  // clear previous stored name
-            nameElement.textContent = currentName + "."; // Revert if empty
+            nameElement.textContent = currentName //+ "."; // Revert if empty
             localStorage.setItem('inputValue',"Ryan"); //debugger
         }
     }
@@ -86,12 +95,15 @@ nameElement.addEventListener('dblclick', () => {
 
     inputName.addEventListener('keypress', (event) => {
         if(event.key === "Enter"){
-        const newName = inputName.value.trim(); // removes spaces on input
+        const newName = inputName.value.trim(); 
         if (newName) {
             nameElement.textContent = ""; // Update the name
-            nameElement.textContent += newName + "."; // Update the name
+            nameElement.textContent += newName; // Update the name
+            if (!nameElement.textContent.endsWith(".")) { // "." error handling
+                nameElement.textContent += ".";
+            }
         } else {
-            nameElement.textContent = currentName + "."; // Revert if empty
+            nameElement.textContent = currentName //+ "."; // Revert if empty
             localStorage.removeItem('inputValue'); // clear previous stored name
             localStorage.setItem('inputValue',"Ryan"); // debugger
             
